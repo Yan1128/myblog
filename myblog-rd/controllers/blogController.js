@@ -1,13 +1,16 @@
 const model = require("../models/blogModel")
-
+const utils = require("../utils/dateTimeUtil")
 module.exports = {
   async welcome(ctx) {
     //查询数据库
     let results = await model.getBlogs();
+    let {post_time}=results[0];
+    let postTime=await utils.formatTime(post_time);
     //let loginUser = ctx.session.loginUser;
     ctx.body = {
       state: "success",
-      results
+      results,
+      postTime
     };
 
   },
@@ -22,6 +25,7 @@ module.exports = {
         content,
         post_time,
       };
+      let postTime=await utils.formatTime(post_time);
       blogInfo.comments = [];
       for (let i = 0; i < results.length; i++) {
         let obj = results[i];
@@ -32,10 +36,22 @@ module.exports = {
           username: obj.username
         });
       }
+      // let times=[];
+      // for(let i=0;i<comments.length;i++){
+      //   let {comm_post_time,comm_id}=comment[i];
+      //   times.push({
+      //     time:comm_post_time,
+      //     id:comm_id
+      //   })
+      // }
+
+      //let postCommTime=await utils.formatTime(post_time);
       //let loginUser = ctx.session.loginUser;
       ctx.body = {
         state: "success",
         blog: blogInfo,
+        postTime,
+        //times
       };
     }
   },

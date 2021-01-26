@@ -9,7 +9,7 @@
           }}</router-link>
         </h3>
         <p class="blog-content">{{ item.content }}</p>
-        <span class="post-time">{{ item.post_time }}</span>
+        <span class="post-time">{{ postBlogTime }}</span>
       </div>
     </div>
   </div>
@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       blogList: [],
+      postBlogTime:''
     };
   },
 
@@ -36,8 +37,9 @@ export default {
         if (state == "auth-fail") {
           alert("请求未授权-then!");
         } else if (state == "success") {
-          let { results } = res.data;
+          let { results,postTime } = res.data;
           this.blogList = results;
+          this.postBlogTime=postTime;
         }
       });
     },
