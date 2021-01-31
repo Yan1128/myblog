@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="login-form">
+      <div class="img"><img src="../assets/img/8.jpg" alt="" /></div>
       <h1>用户注册</h1>
       <p>
         用户名：<input
@@ -76,11 +77,10 @@ export default {
 
 <style scoped>
 .login-form {
-  width: 650px;
-  background: #cccccc;
-  margin: 40px auto;
-  padding: 20px 0;
+  width: 500px;
+  margin: auto;
   text-align: center;
+  background-color: #faeee7;
 }
 .login-form p {
   padding: 20px 0;
@@ -89,4 +89,20 @@ export default {
 .btn {
   width: 70px;
 }
+.img {
+  margin-top: 50px;
+}
+img {
+  width: 500px;
+  height: 250px;
+}
+input{
+  padding: 5px 10px;
+  border-radius: .5rem;
+  /* box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.05); */
+    border:1px solid #b8baba;
+    background: #ffffff;
+}
+
 </style>

@@ -5,11 +5,17 @@ import Index from '../views/index.vue'
 import BlogDetail from '../views/blogDetail.vue'
 import PostBlog from '../views/postBlog.vue'
 import Regist from '../views/regist.vue'
+import Home from '../views/home.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/Index',
     name: 'Index',
     component: Index
   },

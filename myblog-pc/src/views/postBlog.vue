@@ -4,9 +4,18 @@
        <CommonHeader />
       <div class="blog">
         <h1>发表文章</h1>
-        <p>标题：<input type="text" name="title" v-model="title" /></p>
-        <p>内容：<input type="text" name="content" v-model="content" /></p>
-        <p><button @click="postBlog">发表</button></p>
+        <div class="post">
+          <div class="post-blog">
+          <p>标题：<input type="text" name="title" v-model="title"  class="put1"/></p>
+        </div>
+        
+        <div class="post-blog">
+          
+            <!-- <input type="text" name="content" v-model="content" class="put2" /> -->
+            <textarea rows="20" cols="200" type="text" name="content" v-model="content"></textarea>
+          </div>
+        </div>
+      <button @click="postBlog">发表</button>
       </div>
     </div>
   </div>
@@ -32,12 +41,13 @@ export default {
           .post("/blogs/postBlog", {
             title: this.title,
             content: this.content,
-            user_id: loginUser.user_id,
+            userId: loginUser.user_id,
           })
           .then((res) => {
             let { state } = res.data;
             if (state == "success") {
-              this.$router.push("/");
+              alert("发表文章成功!");
+              this.$router.push("/Index");
             } else {
               alert("发表文章失败!");
             }
@@ -52,13 +62,28 @@ export default {
 </script>
 
 <style scoped>
-.blog {
+/* .blog {
   padding: 20px;
   background: #cccccc;
 }
 .blog-list {
   width: 815px;
   margin: 20px auto;
+} */
+.post-blog{
+  display: flex;
+  justify-items: self-start;
+  align-content: flex-start;
+  padding: 10px 20px;
+}
+.put1{
+  width: 300px;
+}
+p{
+  float: left;
+}
+button{
+  width: 75px;
 }
 </style>
 

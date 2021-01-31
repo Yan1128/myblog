@@ -1,7 +1,8 @@
 <template>
   <div class="container">
-    <CommonHeader />
-    <div class="blog">
+    <div class="blog-list">
+      <CommonHeader />
+      <div class="blog">
       <div class="blog-title">
         <h3>{{ blog && blog.title }}</h3>
         <span>{{ blog &&  postBlogTime }}</span>
@@ -18,12 +19,13 @@
           <div class="comment-info">
             <span class="userinfo">{{ item.username }}</span>/
             <span>{{ item. comm_post_time}}</span>
-            <!-- <div class="post-time"  v-for="item in contentList" :key="item.id">
+            <div class="post-time"  v-for="item in contentList" :key="item.id">
               <span>{{ item.time }}</span>
-            </div> -->
+            </div> 
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -36,7 +38,7 @@ export default {
       contentList:[],
       content:'',
       postBlogTime:'',
-      //commTimeList:[]
+      commTimeList:[]
 
     };
   },
@@ -56,12 +58,12 @@ export default {
           },
         })
         .then((res) => {
-          let { state, blog ,postTime} = res.data;
+          let { state, blog ,postTime,times} = res.data;
           if (state == "success") {
             this.blog = blog;
             this.contentList = blog.comments;
             this.postBlogTime=postTime;
-            //this.commTimeList=times
+            this.commTimeList=times;
           }
         })
         .catch(() => {
@@ -101,11 +103,16 @@ export default {
 </script>
 
 <style scoped>
-.blog {
-  margin: 20px auto;
-  padding: 20px;
-  background: #cccccc;
+
+/* .blog-list {
+  width: 815px;
+  margin: auto;
 }
+.blog {
+    background: #cccccc;
+  padding: 20px;
+  margin-bottom: 20px;
+} */
 .blog-title {
   padding: 10px;
 }

@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/login">登录</router-link> |
-      <router-link to="/regist">注册</router-link> |
+      <!-- <router-link to="/login">登录</router-link> |
+      <router-link to="/regist">注册</router-link> | -->
       <!-- <router-link to="/regist">注册</router-link> -->
-      <router-link to="/">首页</router-link>  |
-      <router-link to="/blog/post">发表文章</router-link> 
+      <!-- <router-link to="/">首页</router-link>  |
+      <router-link to="/blog/post">发表文章</router-link>  -->
     </div>
 
     <router-view />
@@ -18,6 +18,9 @@
 
 
 <style lang="scss">
+body{
+   background:#f4f5f7;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,9 +28,18 @@
   text-align: center;
   color: #2c3e50;
 }
-
+.blog-list {
+  width: 1000px;
+  margin: auto;
+}
+.blog {
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: .5rem;
+}
 #nav {
-  padding: 30px;
+  //padding: 30px;
 
   a {
     font-weight: bold;
@@ -52,12 +64,12 @@ ol {
 }
 
 /* 通用样式 */
-.container {
-  width: 1200px;
-  margin: 0 auto;
-}
+// .container {
+//   width: 1200px;
+//   margin: 0 auto;
+// }
 header {
-  height: 50px;
+  height: 25px;
   //background: #cccccc;
   display: flex;
   justify-content: space-between;

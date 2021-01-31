@@ -32,6 +32,7 @@ instance.interceptors.response.use(
     if(status == 401){
         store.dispatch('logout');
         //location.href = "/login";
+        //$router.push('/login')
     }
     return Promise.reject(error);
   }

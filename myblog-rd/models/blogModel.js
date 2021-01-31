@@ -10,7 +10,7 @@ module.exports={
         FROM t_blog blog  LEFT JOIN t_comment comm 
         ON comm.blog_id=blog.blog_id 
         LEFT JOIN t_user usr ON comm.user_id=usr.user_id
-        WHERE blog.blog_id=?`, [blogId]);
+        WHERE blog.blog_id=? order by comm.post_time desc`, [blogId]);
     },
     saveBlogs(blog){
         let sql = "insert into t_blog set ?";
